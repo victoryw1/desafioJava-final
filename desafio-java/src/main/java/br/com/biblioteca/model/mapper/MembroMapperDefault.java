@@ -1,10 +1,10 @@
-package br.com.biblioteca.generic;
+package br.com.biblioteca.model.mapper;
 
 import org.springframework.data.domain.Page;
 
 import java.util.List;
 
-public interface MapperDefault <E, DTO> {
+public interface MembroMapperDefault <E, DTO> {
 
     DTO parseEntityToDTO(E entity);
 	

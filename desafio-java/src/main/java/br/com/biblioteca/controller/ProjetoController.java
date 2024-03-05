@@ -18,7 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.biblioteca.enums.RiscoEnum;
 import br.com.biblioteca.enums.StatusEnum;
 import br.com.biblioteca.model.dto.ProjetoDTO;
+//import br.com.biblioteca.model.entity.Membro;
 import br.com.biblioteca.model.entity.Projeto;
+//import br.com.biblioteca.service.MembroService;
 import br.com.biblioteca.service.PessoaService;
 import br.com.biblioteca.service.ProjetoService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +32,7 @@ public class ProjetoController {
 
     private final ProjetoService service;
     private final PessoaService pessoaService;
+    //private final MembroService membroService;
 
     @GetMapping("/listar")
     public String lista(Model model) {
@@ -48,7 +51,6 @@ public class ProjetoController {
             model.addAttribute("listFuncionario", pessoaService.listarFuncionarios());
 
             return "adicionar-projeto";
-            // return "redirect:/projeto/"+projeto.getId();
         }
 
         var savedProjeto = service.getMapper().parseEntityToDTO(service.adicionar(projeto));
@@ -60,8 +62,10 @@ public class ProjetoController {
     @GetMapping(value="/{id}")
     public String addEdit(@PathVariable Long id, Model model){
         var projeto =  id.equals(0L) ? new Projeto():service.findById(id);
+        //var membro =  id.equals(0L) ? new Membro():membroService.findById(id);
 
         model.addAttribute("projeto", service.getMapper().parseEntityToDTO(projeto));
+        //model.addAttribute("membro", membroService.getMapper().parseEntityToDTO(membro));
         model.addAttribute("listStatus", StatusEnum.values());
         model.addAttribute("listRisco", RiscoEnum.values());
         model.addAttribute("listGerente", pessoaService.listarGerentes());
