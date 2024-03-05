@@ -1,3 +1,15 @@
+#WebService para adicionar pessoa
+POST: http://localhost:8080/pessoa
+
+#Exemplo Body
+{
+    "nome": "Fulano da Silva",
+    "dataNascimento": "1980-12-01",
+    "cpf": "45724615037",
+    "funcionario": true,
+    "gerente": false
+}
+
 # Desafio Programador Java
 Teste para programador Fullstack Desbravador
 
