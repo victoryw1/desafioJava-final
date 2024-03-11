@@ -71,17 +71,12 @@ public class ProjetoController {
             model.addAttribute("divMembro", true);
         }
             
-        Membro membro;
-        if (id.equals(0L)) {
+        Membro membro = membroService.findById(id);
+        if (membro == null) {
             membro = new Membro();
-        } else {
-            membro = membroService.findById(id);
-            if (membro == null) {
-                membro = new Membro();
-            }
-            model.addAttribute("membro", membroService.getMapper().parseEntityToDTO(membro));
         }
-
+        
+        model.addAttribute("membro", membroService.getMapper().parseEntityToDTO(membro));
         model.addAttribute("idprojeto", id);
         model.addAttribute("projeto", service.getMapper().parseEntityToDTO(projeto));
         model.addAttribute("listStatus", StatusEnum.values());
