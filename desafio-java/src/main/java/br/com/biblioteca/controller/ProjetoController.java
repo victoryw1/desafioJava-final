@@ -82,6 +82,7 @@ public class ProjetoController {
             model.addAttribute("membro", membroService.getMapper().parseEntityToDTO(membro));
         }
 
+        model.addAttribute("idprojeto", id);
         model.addAttribute("projeto", service.getMapper().parseEntityToDTO(projeto));
         model.addAttribute("listStatus", StatusEnum.values());
         model.addAttribute("listRisco", RiscoEnum.values());

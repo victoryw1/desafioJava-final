@@ -25,6 +25,7 @@
                     <hr/>
 
                     <c:url var="add_projeto_url" value="/projeto/adicionar"/>
+                    <c:url var="add_membro_url" value="/membro/adicionar"/>
                     <form:form action="${add_projeto_url}" method="post" modelAttribute="projeto">
                         <form:hidden path="id" />
                         <div class="form-group mb-3">
@@ -88,7 +89,8 @@
                     Selecione o Membro:
                     </div>
                     <div class="card-body">
-                        <form:form action="${add_projeto_url}" method="post" modelAttribute="membro">
+                        <form:form action="${add_membro_url}" method="post" modelAttribute="membro">
+                            <form:hidden path="idProjeto" value="${idprojeto}" />
                             <div class="form-group mb-3">
                                 <form:label path="idPessoa" class="form-label">Membro: </form:label> 
                                 <form:select class="form-select" path="idPessoa">
