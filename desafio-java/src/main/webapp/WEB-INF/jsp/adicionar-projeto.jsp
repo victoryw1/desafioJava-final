@@ -18,7 +18,7 @@
 
             <div class="card">
                 <div class="card-header">
-                  Novo Projeto 
+                  Adicionar / Editar 
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Preencha os campos abaixo:</h5>
@@ -41,13 +41,6 @@
                             <form:select class="form-select" path="idGerente" required="required">
                                 <form:option value="" label="--- Selecione ---"/>
                                 <form:options items="${listGerente}"  itemValue="id" itemLabel="nome"/>
-                            </form:select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <form:label path="idGerente" class="form-label">Membro: </form:label> 
-                            <form:select class="form-select" path="idGerente">
-                                <form:option value="" label="--- Selecione ---"/>
-                                <form:options items="${listFuncionario}"  itemValue="id" itemLabel="nome"/>
                             </form:select>
                         </div>
                         <div class="form-group mb-3">
@@ -82,12 +75,33 @@
                                 <form:options items="${listRisco}"  itemValue="name" itemLabel="label"/>
                             </form:select>
                         </div>
-
-                        <p class="card-text"></p>
-                        <input type="submit" class="btn btn-primary"  value="Salvar"/>
+                        </br>
+                        <input type="submit" class="btn btn-primary"  value="Salvar projeto"/>
                     </form:form>
                 </div>
               </div>
+              <br/>
+
+              <c:if test="${divMembro}">
+                <div class="card">
+                    <div class="card-header">
+                    Selecione o Membro:
+                    </div>
+                    <div class="card-body">
+                        <form:form action="${add_projeto_url}" method="post" modelAttribute="membro">
+                            <div class="form-group mb-3">
+                                <form:label path="idPessoa" class="form-label">Membro: </form:label> 
+                                <form:select class="form-select" path="idPessoa">
+                                    <form:option value="" label="--- Selecione ---"/>
+                                    <form:options items="${listFuncionario}"  itemValue="id" itemLabel="nome"/>
+                                </form:select>
+                            </div>
+                            </br>
+                            <input type="submit" class="btn btn-primary"  value="Salvar membro"/>
+                        </form:form>
+                    </div>
+                </div>
+             </c:if>
         </div>
     </body>
 

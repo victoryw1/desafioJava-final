@@ -33,5 +33,5 @@ public class Membro implements Serializable {
 
     @ManyToOne
 	@JoinColumn(name = "idpessoa", insertable = false, updatable = false )
-	private Pessoa funcionario;
+	private Pessoa pessoa;
 }

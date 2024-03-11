@@ -21,5 +21,5 @@ public class MembroDTO {
     @NotNull
     private Long idPessoa;
 
-    private PessoaDTO funcionario;
+    private PessoaDTO pessoa;
 }
