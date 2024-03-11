@@ -22,7 +22,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.biblioteca.enums.StatusEnum;
 import br.com.biblioteca.model.dto.ProjetoDTO;
 import br.com.biblioteca.model.entity.Projeto;
+import br.com.biblioteca.model.mapper.MembroMapper;
 import br.com.biblioteca.model.mapper.ProjetoMapper;
+import br.com.biblioteca.service.MembroService;
 import br.com.biblioteca.service.PessoaService;
 import br.com.biblioteca.service.ProjetoService;
 
@@ -37,6 +39,9 @@ public class ProjetoControllerTest {
 
     @Mock
     private PessoaService pessoaService;
+
+    @Mock
+    private MembroService membroService;
 
     @Mock
     private Model model;
@@ -87,6 +92,7 @@ public class ProjetoControllerTest {
 
     @Test
     public void telaEdit(){
+        when(membroService.getMapper()).thenReturn(MembroMapper.INSTANCE);
         var redirect = controller.addEdit(1L, model);
         assertTrue(!redirect.isEmpty());
     }
