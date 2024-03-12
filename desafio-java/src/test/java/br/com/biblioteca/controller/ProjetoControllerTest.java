@@ -29,7 +29,7 @@ import br.com.biblioteca.service.PessoaService;
 import br.com.biblioteca.service.ProjetoService;
 
 @ExtendWith(MockitoExtension.class)
-public class ProjetoControllerTest {
+class ProjetoControllerTest {
 
     @InjectMocks
     private ProjetoController controller;
@@ -61,21 +61,21 @@ public class ProjetoControllerTest {
     }
 
     @Test
-    public void lista() {
+    void lista() {
         var redirect = controller.lista(model);
         verify(service ,times(1)).findAll();
         assertTrue(!redirect.isEmpty());
     }
 
     @Test
-    public void adicionar() {
+    void adicionar() {
         var redirect = controller.adicionar(mock(ProjetoDTO.class), bindingResult, redirectAttributes, modelMap);
 
         assertEquals("redirect:/projeto/listar",redirect);
     }
 
     @Test
-    public void adicionarErro() {
+    void adicionarErro() {
 
         when(bindingResult.hasErrors()).thenReturn(true);
 
@@ -85,13 +85,14 @@ public class ProjetoControllerTest {
     }
 
     @Test
-    public void telaAdd(){
+    void telaAdd(){
+        when(membroService.getMapper()).thenReturn(MembroMapper.INSTANCE);
         var redirect = controller.addEdit(0L, model);
         assertEquals("adicionar-projeto",redirect);
     }
 
     @Test
-    public void telaEdit(){
+    void telaEdit(){
         when(membroService.getMapper()).thenReturn(MembroMapper.INSTANCE);
         var redirect = controller.addEdit(1L, model);
         assertTrue(!redirect.isEmpty());
@@ -99,7 +100,7 @@ public class ProjetoControllerTest {
     
 
     @Test
-    public void delete(){
+    void delete(){
         when(service.findById(anyLong())).thenReturn(mock(Projeto.class));
         controller.delete(1L, redirectAttributes);
 
@@ -108,7 +109,7 @@ public class ProjetoControllerTest {
 
 
     @Test
-    public void naoDelete(){
+    void naoDelete(){
         when(service.findById(anyLong())).thenReturn(Projeto.builder().status(StatusEnum.INICIADO).build());
         controller.delete(1L, redirectAttributes);
 

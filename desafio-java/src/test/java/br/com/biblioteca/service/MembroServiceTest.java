@@ -1,7 +1,6 @@
 package br.com.biblioteca.service;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,16 +9,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import br.com.biblioteca.repository.PessoaRepository;
+import br.com.biblioteca.repository.MembroRepository;
 
 @ExtendWith(MockitoExtension.class)
-class PessoaServiceTest {
+class MembroServiceTest {
 
     @InjectMocks
-    private PessoaService service;
+    private MembroService service;
 
     @Mock
-    private PessoaRepository repository;
+    private MembroRepository repository;
 
 
     @BeforeEach
@@ -34,11 +33,5 @@ class PessoaServiceTest {
     void getMapper() {
         assertNotNull(service.getMapper());
     }
-
-    @Test
-    void listarFuncionarios() {
-        var list = service.listarFuncionarios();
-
-        assertTrue(list.isEmpty());
-    }
+    
 }

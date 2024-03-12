@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.biblioteca.repository.ProjetoRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class ProjetoServiceTest {
+class ProjetoServiceTest {
     
     @InjectMocks
     private ProjetoService service;
@@ -25,12 +25,12 @@ public class ProjetoServiceTest {
     public void before() {}
 
     @Test
-    public void getRepository() {
+    void getRepository() {
         assertNotNull(service.getRepository());
     }
 
     @Test
-    public void getMapper() {
+    void getMapper() {
         assertNotNull(service.getMapper());
     }
 }

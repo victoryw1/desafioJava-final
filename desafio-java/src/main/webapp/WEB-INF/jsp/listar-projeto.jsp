@@ -30,6 +30,7 @@
                     <h5 class="card-title">Todos os projetos</h5>
                     <hr/>
                     <table class="table table-striped">
+                        <caption></caption>
                         <thead>
                         <tr>
                             <th scope="col">Nome</th>

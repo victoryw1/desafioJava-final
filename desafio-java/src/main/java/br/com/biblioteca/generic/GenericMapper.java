@@ -4,17 +4,17 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
-public interface GenericMapper <E extends GenericEntity, DTO extends GenericDTO> {
+public interface GenericMapper <E extends GenericEntity, D extends GenericDTO> {
 
-    DTO parseEntityToDTO(E entity);
+    D parseEntityToDTO(E entity);
 	
-	E parseDTOToEntity(DTO dto);
+	E parseDTOToEntity(D dto);
 
-    List<DTO> listEntityToListDTO(List<E> list);
+    List<D> listEntityToListDTO(List<E> list);
 
-	List<E> listDTOToListEntity(List<DTO> list);
+	List<E> listDTOToListEntity(List<D> list);
 	
-    default Page<DTO> pageEntityToPageDTO(Page<E> pageEntity) {
+    default Page<D> pageEntityToPageDTO(Page<E> pageEntity) {
 		return pageEntity.map(this::parseEntityToDTO);
 	}
 }

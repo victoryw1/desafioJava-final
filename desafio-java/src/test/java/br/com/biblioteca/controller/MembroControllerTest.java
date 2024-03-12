@@ -19,7 +19,7 @@ import br.com.biblioteca.model.mapper.MembroMapper;
 import br.com.biblioteca.service.MembroService;
 
 @ExtendWith(MockitoExtension.class)
-public class MembroControllerTest {
+class MembroControllerTest {
 
     @InjectMocks
     private MembroController controller;
@@ -42,7 +42,7 @@ public class MembroControllerTest {
     }
 
     @Test
-    public void adicionar() {
+    void adicionar() {
         var redirect = controller.adicionar(mock(MembroDTO.class), bindingResult, redirectAttributes, modelMap);
 
         assertEquals("redirect:/projeto/listar",redirect);

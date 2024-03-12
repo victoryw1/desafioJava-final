@@ -23,7 +23,7 @@ import br.com.biblioteca.model.mapper.PessoaMapper;
 import br.com.biblioteca.service.PessoaService;
 
 @ExtendWith(MockitoExtension.class)
-public class PessoaControllerTest {
+class PessoaControllerTest {
     
     @InjectMocks
     private PessoaController controller;
@@ -44,12 +44,12 @@ public class PessoaControllerTest {
     private ModelMap modelMap;
 
     @Test
-    public void adicionar() {
+    void adicionar() {
         when(service.getMapper()).thenReturn(PessoaMapper.INSTANCE);
 
         var response = controller.adicionar(mock(PessoaDTO.class));
 
         verify(service ,times(1)).adicionar(any(PessoaDTO.class));
-        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 }

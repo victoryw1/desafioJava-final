@@ -8,14 +8,14 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.transaction.annotation.Transactional;
 
-public abstract class GenericService <E extends GenericEntity, DTO extends GenericDTO> {
+public abstract class GenericService <E extends GenericEntity, D extends GenericDTO> {
 
     public abstract GenericRepository<E> getRepository();
-    public abstract GenericMapper<E, DTO> getMapper();
+    public abstract GenericMapper<E, D> getMapper();
     
     @SuppressWarnings("null")
     @Transactional
-	public E adicionar(DTO dto) {
+	public E adicionar(D dto) {
 
 		var entity = getMapper().parseDTOToEntity(dto);
 		
@@ -36,7 +36,7 @@ public abstract class GenericService <E extends GenericEntity, DTO extends Gener
 
     @SuppressWarnings("null")
     @Transactional(readOnly = true)
-	public List<DTO> listar(DTO dto) {
+	public List<D> listar(D dto) {
         E entity = getMapper().parseDTOToEntity(dto);
         return getMapper().listEntityToListDTO(getRepository().findAll(
                 Example.of(entity,
